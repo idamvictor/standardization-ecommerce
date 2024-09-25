@@ -4,16 +4,18 @@ function App() {
   return (
     <>
       <header>
-        <Header />
+        <GreenHeader />
         <LightHeader />
       </header>
 
       <main>
-        <section>
+        <section className="flex w-full justify-center">
           <FeaturedProducts />
         </section>
 
-        <section></section>
+        <section>
+          <Services />
+        </section>
       </main>
     </>
   );
@@ -22,11 +24,11 @@ function App() {
 export default App;
 
 //==================================== Green Header ================================
-const Header = () => {
+const GreenHeader = () => {
   return (
     <header className="flex overflow-hidden flex-col justify-center pt-2.5 text-sm font-bold tracking-wide leading-6 text-white bg-teal-700">
       <div className="flex overflow-hidden justify-between items-start">
-        <div className="flex flex-wrap gap-10 justify-between items-start px-6 min-w-[15rem] w-[89.875rem] max-md:px-5 max-md:max-w-full">
+        <div className="flex flex-wrap gap-10 justify-between items-start px-6 min-w-[15rem] w-[100%] max-md:px-5 max-md:max-w-full">
           <div className="flex overflow-hidden gap-2.5 items-center min-h-[2.875rem] min-w-[15rem]">
             <div className="flex overflow-hidden gap-1.5 items-center self-stretch p-2.5 my-auto rounded-md ">
               <img
@@ -83,7 +85,7 @@ function LightHeader() {
   return (
     <header className="flex flex-wrap gap-2.5 p-4 overflow-hidden">
       <div className="flex items-center">
-        <h1 className="text-2xl font-bold text-slate-800 pr-[75px]">Bandage</h1>
+        <h1 className="text-2xl font-bold text-slate-800 pr-[75px] pl-5">Bandage</h1>
       </div>
 
       <nav className="flex-grow">
@@ -145,7 +147,7 @@ function LightHeader() {
 
 const FeaturedProducts = () => {
   return (
-    <section className="flex overflow-hidden flex-col items-center w-full">
+    <section className="flex overflow-hidden flex-col items-center max-w-[68.4rem] ">
       {/*Header */}
       <h2 className="text-xl">Featured Products</h2>
       <h1 className="mt-2.5 text-2xl font-bold tracking-normal leading-none text-slate-800">
@@ -242,7 +244,7 @@ const productData = [
 
 const ProductGrid = () => {
   return (
-    <section className="flex overflow-hidden flex-col p-6 max-md:px-5 max-md:max-w-full">
+    <section className="flex overflow-hidden flex-col p-6 max-md:px-5 max-md:max-w-full ">
       <div className="flex flex-wrap gap-8 items-start max-md:max-w-full">
         {productData.map((product, index) => (
           <ProductCard key={index} {...product} />
@@ -287,3 +289,82 @@ const ProductCard = ({
     </article>
   );
 };
+
+//=================================== Services ===================================================
+function Services() {
+  return (
+    <section className="flex overflow-hidden flex-col justify-center items-center px-20 pb-4 w-full text-center bg-white max-md:px-5 max-md:max-w-full">
+      <div className="flex overflow-hidden flex-col items-center py-20 w-full max-w-[1050px] max-md:max-w-full">
+        <header className="flex overflow-hidden flex-col items-center max-w-full tracking-wide text-neutral-500 w-[692px]">
+          <div className="flex overflow-hidden flex-col items-center w-full">
+            <h2 className="text-xl">Featured Products</h2>
+            <h3 className="mt-2.5 text-2xl font-bold tracking-normal leading-none text-slate-800">
+              THE BEST SERVICES
+            </h3>
+            <p className="mt-2.5 text-sm leading-none">
+              Problems trying to resolve the conflict between
+            </p>
+          </div>
+        </header>
+
+        <div className="flex flex-wrap gap-8 justify-center items-start mt-20 max-md:mt-10 max-md:max-w-full">
+          {/* First Product */}
+          <article className="flex flex-col items-center min-w-[240px] w-[328px]">
+            <div className="flex overflow-hidden flex-col items-center px-10 py-9 max-w-full w-[315px] max-md:px-5">
+              <img
+                loading="lazy"
+                src="https://tinyurl.com/5exf8mre"
+                alt=""
+                className="object-contain aspect-square w-[72px]"
+              />
+              <h4 className="mt-5 text-2xl font-bold tracking-normal leading-none text-slate-800">
+                Easy Wins
+              </h4>
+              <p className="mt-5 text-sm tracking-wide leading-5 text-neutral-500">
+                Get your best looking smile now!
+              </p>
+            </div>
+          </article>
+
+          {/* Second Product */}
+          <article className="flex flex-col items-center min-w-[240px] w-[328px]">
+            <div className="flex overflow-hidden flex-col items-center px-10 py-9 max-w-full w-[315px] max-md:px-5">
+              <img
+                loading="lazy"
+                src="https://tinyurl.com/4je35mbz"
+                alt=""
+                className="object-contain aspect-square w-[72px]"
+              />
+              <h4 className="mt-5 text-2xl font-bold tracking-normal leading-none text-slate-800">
+                Concrete
+              </h4>
+              <p className="mt-5 text-sm tracking-wide leading-5 text-neutral-500">
+                Defalcate is most focused in helping you discover your most beautiful smile
+              </p>
+            </div>
+          </article>
+
+          {/* Third Product */}
+          <article className="flex flex-col items-center min-w-[240px] w-[328px]">
+            <div className="flex overflow-hidden flex-col items-center px-10 py-9 max-w-full w-[315px] max-md:px-5">
+              <img
+                loading="lazy"
+                src="https://tinyurl.com/389y72a9"
+                alt=""
+                className="object-contain aspect-square w-[72px]"
+              />
+              <h4 className="mt-5 text-2xl font-bold tracking-normal leading-none text-slate-800">
+                Hack Growth
+              </h4>
+              <p className="mt-5 text-sm tracking-wide leading-5 text-neutral-500">
+                Overcame any hurdle or any other problem.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+//=================================== Testimonial Section ========================================
