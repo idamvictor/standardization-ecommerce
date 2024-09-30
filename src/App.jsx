@@ -20,7 +20,19 @@ function App() {
         <section>
           <FeaturedPosts />
         </section>
+
+        <section>
+          <Testimonial />
+        </section>
+
+        <section>
+          <CTA />
+        </section>
       </main>
+
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }
@@ -150,10 +162,9 @@ function LightHeader() {
 //====================================== Hero Section ================================
 
 // ======================================  Featured Products section ====================
-
 const FeaturedProducts = () => {
   return (
-    <section className="flex overflow-hidden flex-col items-center max-w-[68.4rem] ">
+    <section className="flex overflow-hidden flex-col items-center max-w-[68.4rem] py-20 ">
       {/*Header */}
       <h2 className="text-xl">Featured Products</h2>
       <h1 className="mt-2.5 text-2xl font-bold tracking-normal leading-none text-slate-800">
@@ -173,7 +184,6 @@ const FeaturedProducts = () => {
 };
 
 //=================================== Product Grid =======================================
-
 const productData = [
   {
     imageSrc: "https://tinyurl.com/2p8sdssy",
@@ -374,7 +384,6 @@ function Services() {
 }
 
 //=================================== Featured Post ========================================
-
 const featuredPostsData = [
   {
     imageSrc:
@@ -431,7 +440,6 @@ function FeaturedPosts() {
 }
 
 //==================================================== Post Cards ==============================================
-
 function PostCard({ imageSrc, category, title, description, date, comments }) {
   return (
     <article className="flex flex-col items-center min-w-[240px] w-[328px]">
@@ -447,7 +455,6 @@ function PostCard({ imageSrc, category, title, description, date, comments }) {
             <div className=" relative px-2.5 mb-0 bg-red-500 rounded shadow-sm max-md:mb-2.5">
               NEW
             </div>
-          
           </div>
         </div>
         <div className="flex overflow-hidden flex-col px-6 pt-6 pb-9 w-full text-xs text-neutral-500 max-md:px-5">
@@ -497,3 +504,307 @@ function PostCard({ imageSrc, category, title, description, date, comments }) {
     </article>
   );
 }
+
+// ======================================== Testimonial =========================
+function Testimonial() {
+  return (
+    <section className="flex overflow-hidden flex-col items-start px-20 w-full bg-white max-md:px-5 max-md:max-w-full">
+      <div className="flex overflow-hidden flex-col justify-center py-20 w-full max-w-[1128px] max-md:max-w-full">
+        <div className="flex overflow-hidden flex-wrap gap-10 justify-between items-center p-12 w-full max-md:px-5">
+          <TestimonialCard />
+          <ImageGrid />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================== Testimonial Card ============================
+function TestimonialCard() {
+  return (
+    <div className="flex overflow-hidden flex-col items-center self-stretch my-auto min-w-[240px] w-[438px] max-md:max-w-full">
+      <h2 className="text-2xl font-bold tracking-normal leading-none text-center text-slate-800">
+        What they say about us
+      </h2>
+      <div className="flex justify-center items-start px-0.5 py-8 mt-7 max-w-full bg-white rounded-md w-[446px]">
+        <div className="flex overflow-hidden flex-col items-center min-w-[240px] w-[442px] max-md:max-w-full">
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/3c94bda080bfcf8fbf937b234173d70cc17b73d79287fcb99a8e8ab9b1735d77?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c"
+            className="object-contain aspect-square w-[90px]"
+            alt="Testimonial avatar"
+          />
+          <StarRating rating={4} />
+          <p className="mt-5 text-sm font-bold tracking-wide leading-6 text-center text-neutral-500 max-md:max-w-full">
+            Slate helps you see how many more days you need to work to
+            <br />
+            reach your financial goal.
+          </p>
+          <div className="flex flex-col items-center mt-5 text-sm font-bold tracking-wide leading-6 text-center">
+            <span className="text-sky-500">Regina Miles</span>
+            <span className="text-slate-800">Designer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ===================================== Star Rating ============================
+const StarRating = ({ rating }) => {
+  // Create an array of length 5 for the 5 stars.
+  const stars = Array(5).fill(0);
+
+  return (
+    <div className="flex">
+      {stars.map((_, index) => (
+        <span
+          key={index}
+          className={`text-3xl ${
+            index < rating ? "text-yellow-500" : "text-gray-300"
+          }`}
+        >
+          {index < rating ? "★" : "☆"}
+        </span>
+      ))}
+    </div>
+  );
+};
+
+//=================================== Image Grid =============================
+function ImageGrid() {
+  const images = [
+    {
+      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/580b0d5c38633877ba076d9c8ec4c5639e23ba3062aeb93a076241488758fb12?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c",
+      alt: "Grid image 1",
+    },
+    {
+      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/f464271b63ee1c2cc924f51a6165f588ef811b90b05cd533a3cf36be021df598?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c",
+      alt: "Grid image 2",
+    },
+    {
+      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/61bb4007303e5c34033226be6cccb14405e9251c41134f8cbffce5e4ecfe2b61?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c",
+      alt: "Grid image 3",
+    },
+    {
+      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/36d4deca689cf75eae3eaf17eff247049eba9e6ab728f4798b577ac1f2b81b73?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c",
+      alt: "Grid image 4",
+    },
+    {
+      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/bc37ba9ebdc3a9534708a3d1f4d2e25d94d82d8cb2cb51ddbb534b0d2703826f?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c",
+      alt: "Grid image 5",
+    },
+    {
+      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/30d98506cc136b4143e0d9b30f6d26740a4db2e7cb79d624e320ecfa5cc22c34?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c",
+      alt: "Grid image 6",
+    },
+    {
+      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/8b197438b7635fd208a4977f621863b6cce655d05cf853343a1d62079116c683?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c",
+      alt: "Grid image 7",
+    },
+    {
+      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/4445ce4678ea0f5fd5d845472cfe5a895f15e7c5bbf6de0ba7c9642319547688?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c",
+      alt: "Grid image 8",
+    },
+    {
+      src: "https://cdn.builder.io/api/v1/image/assets/TEMP/5549d21d39dd3021c62b11979f8e010169c408c64b82034a36d4c42757b5ed85?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c",
+      alt: "Grid image 9",
+    },
+  ];
+
+  return (
+    <div className="flex gap-5 max-md:flex-col h-[426px] min-w-[240px] w-[464px] max-md:max-w-full flex-wrap">
+      {images.map((image, index) => (
+        <div
+          key={index}
+          className="flex flex-col w-[30%] max-md:ml-0 max-md:w-full wrap"
+        >
+          <img
+            loading="lazy"
+            src={image.src}
+            className="object-contain shrink-0 max-w-full aspect-square w-[143px] max-md:mt-5"
+            alt={image.alt}
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ===================================== CTA ====================================
+function CTA() {
+  return (
+    <main className="flex overflow-hidden flex-col w-full text-sm font-bold tracking-wide text-center bg-white max-md:max-w-full">
+      <section className="flex relative flex-col items-center px-20 w-full min-h-[640px] max-md:px-5 max-md:max-w-full">
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/88d9b2e98869b6064b89f65841b206eeba1d41ffa763effd6b3ac93d978f89f9?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c"
+          className="object-cover absolute inset-0 size-full"
+          alt=""
+        />
+        <div className="flex overflow-hidden relative flex-col items-center pt-40 pb-28 w-full max-w-[1050px] max-md:py-24 max-md:max-w-full">
+          <div className="flex flex-col items-center max-w-full w-[607px]">
+            {/* Header Content */}
+            <header className="flex overflow-hidden flex-col items-center max-md:max-w-full">
+              <h1 className="leading-6 text-sky-500">
+                Designing Better Experience
+              </h1>
+              <h2 className="mt-8 text-4xl leading-[50px] text-slate-800 max-md:max-w-full">
+                Problems trying to resolve <br /> the conflict between{" "}
+              </h2>
+              <p className="mt-8 leading-5 text-neutral-500 w-[447px] max-md:max-w-full">
+                Problems trying to resolve the conflict between the two major
+                realms of Classical physics:{" "}
+              </p>
+            </header>
+
+            {/* MainContent */}
+            <div className="gap-1.5 px-1 mt-8 text-2xl tracking-normal leading-none text-teal-700 whitespace-nowrap">
+              $16.48
+            </div>
+            <div className="flex gap-2.5 items-start mt-8 leading-loose text-white">
+              <button className="overflow-hidden px-10 py-4 bg-sky-500 rounded-md min-h-[52px] min-w-[240px] max-md:px-5">
+                ADD YOUR CALL TO ACTION
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+//============================= Footer ===========================================
+const Footer = () => {
+  const footerColumns = [
+    {
+      title: "Company Info",
+      items: ["About Us", "Carrier", "We are hiring", "Blog"],
+    },
+    {
+      title: "Legal",
+      items: ["About Us", "Carrier", "We are hiring", "Blog"],
+    },
+    {
+      title: "Features",
+      items: [
+        "Business Marketing",
+        "User Analytic",
+        "Live Chat",
+        "Unlimited Support",
+      ],
+    },
+    {
+      title: "Resources",
+      items: ["IOS & Android", "Watch a Demo", "Customers", "API"],
+    },
+  ];
+
+  return (
+    <footer className="flex flex-col w-full bg-white">
+      {/* Top section */}
+      <div className="flex flex-col items-center px-20 py-1 bg-neutral-50 max-md:px-5">
+        <div className="w-full max-w-[1057px] flex flex-col py-10">
+          <div className="flex flex-wrap items-center gap-10 justify-between">
+            {/* Brand */}
+            <div className="text-2xl font-bold text-slate-800 whitespace-nowrap w-[236px]">
+              <div className="py-3.5">Bandage</div>
+            </div>
+            {/* Social Icons */}
+            <div className="flex gap-5 items-center">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/9e4993d3160bcfae09f21f29b17bcb50566d8ea6e33494d025df088d79ecbdb5?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c"
+                className="w-6 object-contain"
+                alt="Icon 1"
+              />
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/36d3ea0706a35f6c79abd462fe0f2bb6b6acd061c3ded46a31123656f142f86a?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c"
+                className="w-6 object-contain"
+                alt="Icon 2"
+              />
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/c7f7aac6c0005852ad352a0291d051682fd982d589f5edf4f349bf374f1aa981?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c"
+                className="w-6 object-contain"
+                alt="Icon 3"
+              />
+            </div>
+          </div>
+          <hr className="mt-10 border-neutral-200" />
+        </div>
+      </div>
+
+      {/* Middle section */}
+      <div className="flex flex-col items-center px-20 py-1 bg-white max-md:px-5">
+        <div className="w-full max-w-[1050px] py-12 flex flex-wrap gap-7">
+          {footerColumns.map((column, index) => (
+            <FooterColumn
+              key={index}
+              title={column.title}
+              items={column.items}
+            />
+          ))}
+          {/* Subscribe Section */}
+          <div className="w-[321px]">
+            <h2 className="text-base font-bold text-slate-800">Get In Touch</h2>
+            <SubscribeForm />
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom section */}
+      <div className="flex flex-col items-center px-20 py-6 bg-neutral-50 text-neutral-500 text-sm font-bold">
+        <div className="w-full max-w-[1050px] text-center">
+          Made With Love By Finland - All Rights Reserved
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// =========================== Footer Column ===================================
+const FooterColumn = ({ title, items }) => {
+  return (
+    <div className="flex overflow-hidden flex-col font-bold w-[152px]">
+      <h2 className="text-base tracking-normal text-slate-800">{title}</h2>
+      <nav className="flex flex-col self-start mt-5 text-sm tracking-wide leading-6 text-neutral-500">
+        {items.map((item, index) => (
+          <a href="#" key={index} className="mt-2.5 first:mt-0">
+            {item}
+          </a>
+        ))}
+      </nav>
+    </div>
+  );
+};
+
+//============================= Subscribe Form ================================
+const SubscribeForm = () => {
+  return (
+    <div className="flex flex-col mt-5 w-full tracking-wide leading-7 max-w-[321px]">
+      <form className="flex overflow-hidden gap-5 justify-between pl-5 text-sm rounded-md border border-solid bg-stone-50 border-neutral-200">
+        <label htmlFor="emailInput" className="sr-only">
+          Your Email
+        </label>
+        <input
+          type="email"
+          id="emailInput"
+          placeholder="Your Email"
+          className="my-auto text-neutral-500 bg-transparent border-none outline-none"
+          aria-label="Your Email"
+        />
+        <button
+          type="submit"
+          className="overflow-hidden px-6 py-4 text-center text-white whitespace-nowrap bg-sky-500 rounded-none border border-solid border-neutral-200 max-md:px-5"
+        >
+          Subscribe
+        </button>
+      </form>
+      <p className="self-start mt-2 text-xs text-neutral-500">
+        Lore imp sum dolor Amit
+      </p>
+    </div>
+  );
+};
