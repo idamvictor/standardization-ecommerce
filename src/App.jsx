@@ -16,6 +16,10 @@ function App() {
         <section>
           <Services />
         </section>
+
+        <section>
+          <FeaturedPosts />
+        </section>
       </main>
     </>
   );
@@ -85,7 +89,9 @@ function LightHeader() {
   return (
     <header className="flex flex-wrap gap-2.5 p-4 overflow-hidden">
       <div className="flex items-center">
-        <h1 className="text-2xl font-bold text-slate-800 pr-[75px] pl-5">Bandage</h1>
+        <h1 className="text-2xl font-bold text-slate-800 pr-[75px] pl-5">
+          Bandage
+        </h1>
       </div>
 
       <nav className="flex-grow">
@@ -162,7 +168,6 @@ const FeaturedProducts = () => {
       <button className="overflow-hidden px-2.5 py-1 mt-1.5 text-sm font-bold tracking-wide leading-7 text-center text-sky-500 rounded-md border border-sky-500 border-solid max-md:px-1.25">
         LOAD MORE PRODUCTS
       </button>
-      
     </section>
   );
 };
@@ -339,7 +344,8 @@ function Services() {
                 Concrete
               </h4>
               <p className="mt-5 text-sm tracking-wide leading-5 text-neutral-500">
-                Defalcate is most focused in helping you discover your most beautiful smile
+                Defalcate is most focused in helping you discover your most
+                beautiful smile
               </p>
             </div>
           </article>
@@ -367,4 +373,127 @@ function Services() {
   );
 }
 
-//=================================== Testimonial Section ========================================
+//=================================== Featured Post ========================================
+
+const featuredPostsData = [
+  {
+    imageSrc:
+      "https://cdn.builder.io/api/v1/image/assets/TEMP/137ee045d17db0d8a843f46a2c028f3e0b6d45d06f9d76690996c1d3a40c90ad?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c",
+    category: "Google",
+    title: "Loudest à la Madison #1 (L'integral)",
+    description:
+      "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
+    date: "22 April 2021",
+    comments: 10,
+  },
+  {
+    imageSrc:
+      "https://cdn.builder.io/api/v1/image/assets/TEMP/5176f8123efc5e5ed77a3e39715f08848ef3edc6070d32ebef7506fce3a25b47?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c",
+    category: "Google",
+    title: "Loudest à la Madison #1 (L'integral)",
+    description:
+      "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
+    date: "22 April 2021",
+    comments: 10,
+  },
+  {
+    imageSrc:
+      "https://cdn.builder.io/api/v1/image/assets/TEMP/6ce86feaff67972207477c94e6a4f89822e7f477eb3e71586c0d1fb2a6ed1319?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c",
+    category: "Google",
+    title: "Loudest à la Madison #1 (L'integral)",
+    description:
+      "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
+    date: "22 April 2021",
+    comments: 10,
+  },
+];
+
+function FeaturedPosts() {
+  return (
+    <section className="flex overflow-hidden flex-col justify-center items-center px-20 w-full tracking-wide bg-white max-md:px-5 max-md:max-w-full">
+      <div className="flex flex-col items-center py-28 w-full max-w-[1050px] max-md:py-24 max-md:max-w-full">
+        <header className="flex overflow-hidden flex-col items-center max-w-full font-bold text-center w-[692px]">
+          <div className="flex overflow-hidden flex-col items-center w-full">
+            <p className="text-sm leading-6 text-sky-500">Practice Advice</p>
+            <h2 className="mt-2.5 text-4xl leading-none text-slate-800">
+              Featured Posts
+            </h2>
+          </div>
+        </header>
+        <div className="flex flex-wrap gap-8 justify-center items-start mt-20 max-md:mt-10 max-md:max-w-full">
+          {featuredPostsData.map((post, index) => (
+            <PostCard key={index} {...post} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+//==================================================== Post Cards ==============================================
+
+function PostCard({ imageSrc, category, title, description, date, comments }) {
+  return (
+    <article className="flex flex-col items-center min-w-[240px] w-[328px]">
+      <div className="flex overflow-hidden flex-col max-w-full bg-white shadow-sm w-[348px]">
+        <div className="flex overflow-hidden flex-col w-full text-sm font-bold leading-6 text-center text-white whitespace-nowrap">
+          <div className="flex overflow-hidden relative flex-col items-start px-5 pt-5 pb-64 w-full aspect-[1.16] max-md:pb-24">
+            <img
+              loading="lazy"
+              src={imageSrc}
+              alt=""
+              className="object-cover absolute inset-0 size-full"
+            />
+            <div className=" relative px-2.5 mb-0 bg-red-500 rounded shadow-sm max-md:mb-2.5">
+              NEW
+            </div>
+          
+          </div>
+        </div>
+        <div className="flex overflow-hidden flex-col px-6 pt-6 pb-9 w-full text-xs text-neutral-500 max-md:px-5">
+          <div className="flex overflow-hidden gap-4 items-center self-start leading-none whitespace-nowrap">
+            <span className="self-stretch my-auto text-blue-300">
+              {category}
+            </span>
+            <span className="self-stretch my-auto">Trending</span>
+            <span className="self-stretch my-auto">New</span>
+          </div>
+          <h3 className="mt-2.5 text-xl leading-8 text-slate-800">{title}</h3>
+          <p className="mt-2.5 text-sm leading-5">{description}</p>
+          <div className="flex overflow-hidden gap-10 justify-between items-center py-4 mt-2.5 w-full leading-none">
+            <time className="flex overflow-hidden gap-1.5 items-center self-stretch my-auto">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/1e8a43b443fc7fd89703c103b429c334a984578935b884dbd82434d5da88ab61?placeholderIfAbsent=true&apiKey=bc155cd4463f4c48a216b01c1991193c"
+                alt=""
+                className="object-contain shrink-0 self-stretch my-auto w-4 aspect-square"
+              />
+              <span className="self-stretch my-auto">{date}</span>
+            </time>
+            <div className="flex overflow-hidden gap-1.5 items-center self-stretch my-auto">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/52faff3b7c96f3ca81be691a4cbe9db7e976facbe51b598b38dd5b19a6f32d39?apiKey=bc155cd4463f4c48a216b01c1991193c&"
+                alt=""
+                className="object-contain shrink-0 self-stretch my-auto w-4 aspect-[1.14]"
+              />
+              <span className="self-stretch my-auto">{comments} comments</span>
+            </div>
+          </div>
+          <a
+            href="#"
+            className="flex overflow-hidden gap-2.5 items-center self-start mt-2.5 text-sm font-bold leading-6"
+          >
+            <span className="self-stretch my-auto">Learn More</span>
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/712c57a79312d8124af9434f43b3862dfd68b5030aa3d81e79f25f89dca37c3d?apiKey=bc155cd4463f4c48a216b01c1991193c&"
+              alt=""
+              className="object-contain shrink-0 self-stretch my-auto aspect-[0.56] w-[9px]"
+            />
+          </a>
+        </div>
+      </div>
+    </article>
+  );
+}
